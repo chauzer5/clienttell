@@ -116,7 +116,7 @@ export default function CallOutputSection(props){
                     <TextField value={otherNotes} placeholder="Type here" multiline rows={5} size="small" fullWidth sx={{mt: 2}} onChange={(e) => setOtherNotes(e.target.value)}/>
                 </Card>
                 <Box sx={styles.buttons}>
-                    <ExportModalButton callInfo={props.callInfo} questions={props.questions} otherNotes={otherNotes}/>
+                    <ExportModalButton callInfo={props.callInfo} questions={props.questions} otherNotes={otherNotes} exportOptions={props.exportOptions}/>
                     <ExitModalButton />
                 </Box>
             </Box>

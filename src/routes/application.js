@@ -6,6 +6,7 @@ import { useLocation, useParams } from 'react-router';
 import AppPage from '../components/AppPage';
 import CallOutputSection from '../components/CallOutputSection';
 import CallTreeSection from '../components/CallTreeSection';
+import { GetTemplateByUUID } from '../data';
 
 export default function Application(){
     const location = useLocation();
@@ -42,7 +43,7 @@ export default function Application(){
                     <CallTreeSection templateId={templateUUID} handleAddQuestion={addQuestionToOutput}/>
                 </Box>
                 <Box sx={{width: "50%", backgroundColor: "whitesmoke"}}>
-                    <CallOutputSection callInfo={state} questions={questions} currentEdit={currentEdit} setQuestions={setQuestions} setCurrentEdit={setCurrentEdit}/>
+                    <CallOutputSection callInfo={state} questions={questions} currentEdit={currentEdit} setQuestions={setQuestions} setCurrentEdit={setCurrentEdit} exportOptions={GetTemplateByUUID(templateUUID).export}/>
                 </Box>
             </Box>
         </AppPage>

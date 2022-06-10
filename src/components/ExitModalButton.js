@@ -1,8 +1,8 @@
-import { Button, Modal, Box, Typography, IconButton } from "@mui/material";
-import React, { useState } from "react";
+import { Button } from "@mui/material";
+import React from "react";
 import { LightenDarkenColor } from "../colormod";
-import CloseIcon from '@mui/icons-material/Close';
-import { useNavigate } from "react-router";
+// import CloseIcon from '@mui/icons-material/Close';
+// import { useNavigate } from "react-router";
 
 export default function ExitModalButton(props){
     const styles= {
@@ -62,25 +62,29 @@ export default function ExitModalButton(props){
         }
     }
 
-    const navigate = useNavigate();
-    const [open, setOpen] = useState(false);
+    // const navigate = useNavigate();
+    // const [open, setOpen] = useState(false);
 
-    const handleOpen = () => {
-        setOpen(true);
-    };
+    // const handleOpen = () => {
+    //     setOpen(true);
+    // };
 
-    const handleClose = () => {
-        setOpen(false)
-    }
+    // const handleClose = () => {
+    //     setOpen(false)
+    // }
 
-    const handleExit = () => {
-        navigate("/home");
+    // const handleExit = () => {
+    //     navigate("/home");
+    // }
+
+    const handleClick = () => {
+        window.location.reload();
     }
 
     return (
         <>
-            <Button onClick={handleOpen} variant="contained" sx={styles.button}>Exit</Button>
-            <Modal
+            <Button onClick={handleClick} variant="contained" sx={styles.button}>New Call</Button>
+            {/* <Modal
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 open={open}
@@ -98,7 +102,7 @@ export default function ExitModalButton(props){
                         <Button sx={styles.modal_button} onClick={handleExit} variant="contained">Exit</Button>
                     </Box>
                 </Box>
-            </Modal>
+            </Modal> */}
         </>
     );
 }

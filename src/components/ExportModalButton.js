@@ -1,6 +1,6 @@
-import { Button, Modal, Box, Typography, IconButton, FormControlLabel, Checkbox, Snackbar } from "@mui/material";
+import { Button, Snackbar } from "@mui/material";
 import React, { useState } from "react";
-import CloseIcon from '@mui/icons-material/Close';
+// import CloseIcon from '@mui/icons-material/Close';
 
 export default function ExportModalButton(props){
     const styles= {
@@ -53,18 +53,31 @@ export default function ExportModalButton(props){
 
     }
 
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
     const [snackBarOpen, setSnackBarOpen] = useState(false);
-    const [includeCallInfo, setIncludeCallInfo] = useState(false);
-    const [includeQuestionPaths, setIncludeQuestionPaths] = useState(false);
+    // const [includeCallInfo, setIncludeCallInfo] = useState(false);
+    // const [includeQuestionPaths, setIncludeQuestionPaths] = useState(false);
 
 
-    const handleOpen = () => {
-        setOpen(true);
-    };
+    // const handleOpen = () => {
+    //     setOpen(true);
+    // };
 
-    const handleClose = () => {
-        setOpen(false);
+    // const handleClose = () => {
+    //     setOpen(false);
+    // };
+
+    const handleClick = () => {
+        switch(props.exportOptions.mode){
+            case "clipboard":
+                handleCopy();
+                break;
+            case "csv":
+                // later
+                break;
+            default:
+                // do nothing
+        }
     };
 
     const handleSnackBarOpen = () => {
@@ -77,22 +90,25 @@ export default function ExportModalButton(props){
 
     const handleCopy = () => {
         let copyString = "";
-        if(includeCallInfo){
+        if(props.exportOptions.includeCallInfo){
             copyString += `Call Info (${props.callInfo.date})\n`;
-            copyString += `Company Name: ${props.callInfo.companyName}\n`;
+            copyString += (props.callInfo.companyName ? `Company Name: ${props.callInfo.companyName}\n` : "");
             copyString += (props.callInfo.contactName ? `Contact Name: ${props.callInfo.contactName}\n` : "");
             copyString += (props.callInfo.notes ? `Additional Notes:\n${props.callInfo.notes}\n` : "");
+            copyString += "\n";
         }
 
         for(let i = 0; i < props.questions.length; i++){
-            copyString += "\n";
             copyString += props.questions[i].question;
-            copyString += (includeQuestionPaths ? ` (${props.questions[i].path})\n` : "\n");
+            copyString += ((props.exportOptions.includePaths && props.questions[i].path !== "") ? ` (${props.questions[i].path})\n` : "\n");
             copyString += props.questions[i].note;
             copyString += (i === props.questions.length ? "" : "\n");
         }
 
-        copyString += props.otherNotes ? ("\n" + props.otherNotes) : "";
+        if(props.otherNotes){
+            copyString += "\nOther notes:\n"
+            copyString += `${props.otherNotes}`;
+        }
 
         navigator.clipboard.writeText(copyString);
         console.log(props.callInfo);
@@ -101,8 +117,8 @@ export default function ExportModalButton(props){
 
     return (
         <>
-            <Button onClick={handleOpen} variant="contained" sx={styles.button}>Export</Button>
-            <Modal
+            <Button onClick={handleClick} variant="contained" sx={styles.button}>Export</Button>
+            {/* <Modal
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 open={open}
@@ -128,10 +144,10 @@ export default function ExportModalButton(props){
 
                     <Box sx={styles.export_options}>
                         <Button onClick={handleCopy} variant="contained" sx={styles.modal_button}>Copy to Clipboard</Button>
-                        {/* <Button variant="contained" sx={styles.modal_button}>Export as CSV</Button> */}
+                        <Button variant="contained" sx={styles.modal_button}>Export as CSV</Button>
                     </Box>
                 </Box>
-            </Modal>
+            </Modal> */}
             <Snackbar
                 open={snackBarOpen}
                 autoHideDuration={4000}

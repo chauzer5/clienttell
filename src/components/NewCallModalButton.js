@@ -116,10 +116,10 @@ export default function NewCallModalButton({templateUUID}){
                             </Box>
                         </Box>
                         <FormLabel sx={styles.label}>Company Name</FormLabel>
-                        <TextField required={true} value={companyName} onChange={(e) => setCompanyName(e.target.value)} size="small" fullWidth sx={{...styles.field}}/>
-                        <FormLabel sx={styles.label}>{"Contact Name (Optional)"}</FormLabel>
+                        <TextField value={companyName} onChange={(e) => setCompanyName(e.target.value)} size="small" fullWidth sx={{...styles.field}}/>
+                        <FormLabel sx={styles.label}>{"Contact Name"}</FormLabel>
                         <TextField value={contactName} onChange={(e) => setContactName(e.target.value)} size="small" fullWidth sx={{...styles.field}}/>
-                        <FormLabel sx={styles.label}>{"Additional Notes (Optional)"}</FormLabel>
+                        <FormLabel sx={styles.label}>{"Additional Notes"}</FormLabel>
                         <TextField value={notes} onChange={(e) => setNotes(e.target.value)} multiline rows={5} size="small" fullWidth sx={{...styles.field}}/>
                         <Box sx={{display: "flex", flexDirection:"row", justifyContent:"flex-end"}}>
                             <Button onClick={handleClose}>Cancel</Button>

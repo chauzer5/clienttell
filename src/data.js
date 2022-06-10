@@ -12,6 +12,11 @@ let templates = [
         uuid: "dc0b3670-b3df-4760-97cb-0973a196a9d9",
         name: "Cold Call",
         description: `Template used for day-to-day cold calls, with a focus on ATS.`,
+        export: {
+            mode: "clipboard",
+            includeCallInfo: false,
+            includePaths: true
+        },
         tree: [
             {
                 type: "question",
