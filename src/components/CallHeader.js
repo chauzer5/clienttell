@@ -93,7 +93,9 @@ export default function CallHeader(props) {
             </Grid>
             <Grid item>
                 <Box sx={styles.middle_section}>
-                    <Typography sx={styles.call_info}>{`Call with ${props.callInfo.companyName} (${props.callInfo.date})`}</Typography>
+                    <Typography sx={styles.call_info}>{(props.callInfo.companyName ? 
+                        `Call with ${props.callInfo.companyName} (${props.callInfo.date})` : 
+                        `Call on ${props.callInfo.date}`)}</Typography>
                     <IconButton onClick={handleOpen} size="small" sx={{ ml: 2 }} >
                         <EditIcon sx={{fill: "white"}}/>
                     </IconButton>
