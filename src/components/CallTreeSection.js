@@ -1,5 +1,5 @@
 import { Box, Button, Divider } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import HomeIcon from '@mui/icons-material/Home';
 import QuestionItem from './QuestionItem';
 import { GetTemplateByUUID } from '../data';
@@ -62,33 +62,32 @@ export default function CallTreeSection(props){
     };
 
     const templateTree = GetTemplateByUUID(props.templateId).tree;
-    const [folderPath, setFolderPath] = useState([]);
 
     const handleGoDown = (folder) => {
-        setFolderPath(folderPath.concat(folder));
+        props.setFolderPath(props.folderPath.concat(folder));
     };
 
     const handleGoUp = (folder) => {
         let newPath = [];
-        for(let i = 0; i < folderPath.length; i++){
-            newPath = newPath.concat(folderPath[i]);
-            if(folderPath[i] === folder){ break; }
+        for(let i = 0; i < props.folderPath.length; i++){
+            newPath = newPath.concat(props.folderPath[i]);
+            if(props.folderPath[i] === folder){ break; }
         }
-        setFolderPath(newPath);
+        props.setFolderPath(newPath);
     };
 
     const handleGoHome = () => {
-        setFolderPath([]);
+        props.setFolderPath([]);
     }
 
     const getCorrectFolderContents = () => {
-        return folderPath.length ? folderPath[folderPath.length - 1].contents : templateTree;
+        return props.folderPath.length ? props.folderPath[props.folderPath.length - 1].contents : templateTree;
     }
 
     return (
         <>
             <Box sx={styles.folders}>
-                {folderPath.length === 0 ? (
+                {props.folderPath.length === 0 ? (
                     <Box sx={styles.folder_box}>
                         <Button variant="contained" sx={{...styles.home_button, flexGrow: 1}}><HomeIcon fontSize="large"/></Button>
                     </Box>
@@ -97,15 +96,15 @@ export default function CallTreeSection(props){
                         <Box sx={styles.folder_box}>
                             <Button onClick={handleGoHome} variant="contained" sx={styles.home_button}><HomeIcon fontSize="large"/></Button>
                             <Button 
-                                onClick={() => {handleGoUp(folderPath[0])}} 
+                                onClick={() => {handleGoUp(props.folderPath[0])}} 
                                 variant="contained" 
-                                sx={{...styles.folder_button, backgroundColor: folderPath[0].color, "&:hover": {backgroundColor: LightenDarkenColor(folderPath[0].color, -40)}}}
+                                sx={{...styles.folder_button, backgroundColor: props.folderPath[0].color, "&:hover": {backgroundColor: LightenDarkenColor(props.folderPath[0].color, -40)}}}
                             >
-                                {folderPath[0].name}
+                                {props.folderPath[0].name}
                             </Button>
                         </Box>
                         {
-                        folderPath.slice(1).map((folderRef) => {
+                        props.folderPath.slice(1).map((folderRef) => {
                             return (
                                 <Box key={folderRef.name} sx={styles.folder_box}>
                                     <Button 
@@ -143,7 +142,7 @@ export default function CallTreeSection(props){
                                 );
                             }
                             else if(itemRef.type === "question"){
-                                return <QuestionItem key={itemRef.text} text={itemRef.text} handleAdd={props.handleAddQuestion} folderPath={folderPath}/>;
+                                return <QuestionItem key={itemRef.text} text={itemRef.text} handleAdd={props.handleAddQuestion} folderPath={props.folderPath}/>;
                             }
                             
                             return "";

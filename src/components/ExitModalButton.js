@@ -78,7 +78,7 @@ export default function ExitModalButton(props){
     // }
 
     const handleClick = () => {
-        window.location.reload();
+        props.handleNewCall();
     }
 
     return (

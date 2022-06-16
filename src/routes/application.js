@@ -23,6 +23,10 @@ export default function Application(){
     // currentEdit contains and integer representing which question is opened up, if any
     const [currentEdit, setCurrentEdit] = useState(-1);
 
+    // we need to keep track of the current folder here so that the New Call button can reset it
+    const [folderPath, setFolderPath] = useState([]);
+
+
     // takes a question to add, and folderPath from lowest to highest
     const addQuestionToOutput = (questionText, folderPath) => {
         const folderPathAsString = folderPath.map(folder => folder.name).reverse().join(" - ");
@@ -34,16 +38,33 @@ export default function Application(){
         console.log(`Path: ${folderPathAsString}`);
     };
 
-
+    const handleNewCall = () => {
+        setQuestions([]);
+        setCurrentEdit(-1);
+        setFolderPath([]);
+    }
 
     return (
         <AppPage call={true} callInfo={{...state}} setCallInfo={setState} templateId={templateUUID}>
             <Box sx={{height: "100%", width: "100%", display: "flex", flexDirection: "row", justifyContent: "center", alignItems:"stretch"}}>
                 <Box sx={{width: "50%", backgroundColor: "#E1E1E1", overflow: "auto", maxHeight: "100%"}}>
-                    <CallTreeSection templateId={templateUUID} handleAddQuestion={addQuestionToOutput}/>
+                    <CallTreeSection
+                        folderPath={folderPath}
+                        setFolderPath={setFolderPath}
+                        templateId={templateUUID}
+                        handleAddQuestion={addQuestionToOutput}
+                    />
                 </Box>
                 <Box sx={{width: "50%", backgroundColor: "whitesmoke"}}>
-                    <CallOutputSection callInfo={state} questions={questions} currentEdit={currentEdit} setQuestions={setQuestions} setCurrentEdit={setCurrentEdit} exportOptions={GetTemplateByUUID(templateUUID).export}/>
+                    <CallOutputSection
+                        handleNewCall={handleNewCall}
+                        callInfo={state}
+                        questions={questions}
+                        currentEdit={currentEdit}
+                        setQuestions={setQuestions}
+                        setCurrentEdit={setCurrentEdit}
+                        exportOptions={GetTemplateByUUID(templateUUID).export}
+                    />
                 </Box>
             </Box>
         </AppPage>
