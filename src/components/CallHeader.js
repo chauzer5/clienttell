@@ -90,7 +90,7 @@ export default function CallHeader(props) {
     return (
 
         <Box sx={styles.root}>
-            <Link to="/home"><ClientTellLogo style={{ color: "white", fontSize: 24 }}/></Link>
+            <Link to="/home"><ClientTellLogo style={{ color: "white", fontSize: 24, mx: 2 }}/></Link>
 
             <Box sx={styles.middle_section}>
                 <Typography sx={styles.call_info}>{(props.callInfo.companyName ? 

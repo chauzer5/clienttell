@@ -9,16 +9,21 @@ export default function AppPage(props){
             background: "whitesmoke",
             width: "100vw",
             height: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "stretch"
         },
     }
 
     const header = (props.call ? <CallHeader templateId={props.templateId} callInfo={props.callInfo} setCallInfo={props.setCallInfo}/> : <SiteHeader />);
 
     return (
-
         <Box sx={styles.root}>
             {header}
-            {props.children}
+            <Box sx={{flexGrow: 1}}>
+                {props.children}
+            </Box>
         </Box>
     );
 }

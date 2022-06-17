@@ -38,16 +38,11 @@ export default function Application(){
         console.log(`Path: ${folderPathAsString}`);
     };
 
-    // const handleNewCall = () => {
-    //     setQuestions([]);
-    //     setCurrentEdit(-1);
-    //     setFolderPath([]);
-    // }
 
     return (
         <AppPage call={true} callInfo={{...state}} setCallInfo={setState} templateId={templateUUID}>
             <Box sx={{height: "100%", width: "100%", display: "flex", flexDirection: "row", justifyContent: "center", alignItems:"stretch"}}>
-                <Box sx={{width: "50%", backgroundColor: "#E1E1E1", overflow: "auto", maxHeight: "100%"}}>
+                <Box sx={{width: "50%", backgroundColor: "#E1E1E1", overflow: "auto", height: "100%"}}>
                     <CallTreeSection
                         folderPath={folderPath}
                         setFolderPath={setFolderPath}
@@ -55,9 +50,8 @@ export default function Application(){
                         handleAddQuestion={addQuestionToOutput}
                     />
                 </Box>
-                <Box sx={{width: "50%", backgroundColor: "whitesmoke"}}>
+                <Box sx={{width: "50%", backgroundColor: "whitesmoke", height: "100%"}}>
                     <CallOutputSection
-                        // handleNewCall={handleNewCall}
                         callInfo={state}
                         questions={questions}
                         currentEdit={currentEdit}

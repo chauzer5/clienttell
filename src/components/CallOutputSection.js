@@ -96,7 +96,7 @@ export default function CallOutputSection(props){
     const [otherNotes, setOtherNotes] = useState("");
 
     return (
-        <Box sx={{display: "flex", flexDirection: "column", height: "100%", maxWidth: "100%"}}>
+        <Box sx={{display: "flex", flexDirection: "column", height: "100%", width: "100%"}}>
             <Box sx={styles.top_section}>
                 {
                     props.questions.map(({question, path, note}, index) => {
@@ -117,9 +117,7 @@ export default function CallOutputSection(props){
                 </Card>
                 <Box sx={styles.buttons}>
                     <ExportModalButton callInfo={props.callInfo} questions={props.questions} otherNotes={otherNotes} exportOptions={props.exportOptions}/>
-                    <ExitModalButton 
-                        // handleNewCall={props.handleNewCall}
-                    />
+                    <ExitModalButton />
                 </Box>
             </Box>
         </Box>
