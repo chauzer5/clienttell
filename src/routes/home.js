@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import AppPage from '../components/AppPage';
@@ -12,6 +12,22 @@ export default function Home(){
             textAlign: 'center',
             pt: 10
         },
+
+        content: {
+            height: "90%",
+            display: "flex",
+            flexDirection: "column"
+        },
+
+        button_box: {
+            flexGrow: 1,
+            // backgroundColor: "blue",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            flexWrap: "wrap"
+        }
     };
 
     const navigate = useNavigate();
@@ -26,17 +42,13 @@ export default function Home(){
 
     return (
         <AppPage>
-            <Grid container height="100%">
-                <Grid item xs={12}>
-                    <Typography variant="h3" sx={styles.header}>Welcome, {GetUser().firstName}</Typography>
-                </Grid>
-                <Grid item xs={12}>
-                    <Grid container direction="row" justifyContent="center" alignItems="center" height="600px">
-                        <GiantButton handleClick={handleClickCall} smallText="MAKE A" largeText="CALL" style={{backgroundColor: "#60AFFF", m: 4}} />
-                        <GiantButton handleClick={handleClickTemplates} smallText="EDIT" largeText="TEMPLATES" style={{backgroundColor: "#D09E14", m: 4, "&:hover": {backgroundColor: "#947D3F"}}} />
-                    </Grid>
-                </Grid>
-            </Grid>
+            <Box sx={styles.content}>
+                <Typography variant="h3" sx={styles.header}>Welcome, {GetUser().firstName}</Typography>
+                <Box sx={styles.button_box}>
+                    <GiantButton handleClick={handleClickCall} smallText="MAKE A" largeText="CALL" style={{backgroundColor: "#60AFFF", mx: 4}} />
+                    <GiantButton handleClick={handleClickTemplates} smallText="EDIT" largeText="TEMPLATES" style={{backgroundColor: "#D09E14", mx: 4, "&:hover": {backgroundColor: "#947D3F"}}} />
+                </Box>
+            </Box>
         </AppPage>
     );
 }

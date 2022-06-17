@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, TextField, Typography, Grid, Box, Container } from '@mui/material';
+import { Button, TextField, Typography, Box, Container } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function SignUpForm() {
@@ -74,10 +74,6 @@ export default function SignUpForm() {
                         id="password"
                         autoComplete="current-password"
                     />
-                    {/* <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                    /> */}
                     <Link to="/home" style={{textDecoration: "none"}}>
                         <Button
                             type="submit"
@@ -88,16 +84,9 @@ export default function SignUpForm() {
                             SIGN UP
                         </Button>
                     </Link>
-                    <Grid container>
-                        <Grid item xs>
-                            
-                        </Grid>
-                        <Grid item>
-                            <Link to="/signin" style={styles.link}>
-                                Already have an account? Sign in
-                            </Link>
-                        </Grid>
-                    </Grid>
+                    <Box sx={{display: "flex", justifyContent: "flex-end"}}>
+                        <Link to="/signin" style={styles.link}>Already have an account? Sign in</Link>
+                    </Box>
                 </Box>
             </Box>
         </Container>

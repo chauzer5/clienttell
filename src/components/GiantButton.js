@@ -1,4 +1,4 @@
-import { Button, Typography, Grid } from "@mui/material";
+import { Button, Typography, Box } from "@mui/material";
 import React from "react";
 
 export default function GiantButton(props){
@@ -17,19 +17,21 @@ export default function GiantButton(props){
             fontSize: 64
         },
 
-        
+        box: {
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center"
+        }
     };
 
     return (
         <Button onClick={props.handleClick} variant="contained" sx={styles.button}>
-            <Grid container>
-                <Grid item xs={12}>
-                    <Typography sx={styles.small_text}>{props.smallText}</Typography>
-                </Grid>
-                <Grid item xs={12}>
-                    <Typography sx={styles.large_text}>{props.largeText}</Typography>
-                </Grid>
-            </Grid>
+            <Box sx={styles.box}>
+                <Typography sx={styles.small_text}>{props.smallText}</Typography>
+                <Typography sx={styles.large_text}>{props.largeText}</Typography>
+            </Box>
         </Button>
     );
 }

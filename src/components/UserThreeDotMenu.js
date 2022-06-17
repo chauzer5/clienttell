@@ -21,7 +21,7 @@ export default function UserThreeDotMenu({name}) {
 
     return (
         <>
-            <Box sx={{ display: 'flex', alignItems: 'center', textAlign:"center" }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', textAlign:"center", mx: 2 }}>
                 <Typography color="white">{name}</Typography>
                 <IconButton
                     onClick={handleClick}

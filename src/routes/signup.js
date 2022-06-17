@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Grid } from '@mui/material';
+import { Card, CardContent, Box } from '@mui/material';
 import ClientTellLogo from '../components/ClientTellLogo';
 import SignUpForm from '../components/SignUpForm';
 
@@ -12,24 +12,25 @@ export default function SignUp(){
             height: "100vh",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center"
+            justifyContent: "center",
+            alignItems: "center"
         },
 
         card: {
             width: "500px",
-            height: "650px",
+            height: "600px",
             px: 2
         }
     }
 
     return (
-        <Grid sx={styles.root} alignItems="center" justify="center">
+        <Box sx={styles.root}>
             <Card sx={styles.card}>
                 <CardContent>
                     <ClientTellLogo />
                     <SignUpForm />
                 </CardContent>
             </Card>
-        </Grid>
+        </Box>
     );
 }

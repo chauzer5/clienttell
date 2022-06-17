@@ -18,9 +18,9 @@ root.render(
       <Routes>
         <Route path="/" element={<Navigate to="/signin" />} />
 
-        <Route path="signin" element={<SignIn />} />
+        <Route path="signin" element={<SignIn />}/>
         <Route path="signup" element={<SignUp />} />
-        <Route path="home" element={<Home />} />
+        <Route path="home" element={<Home />}/>
         <Route path="call" element={<Call />} />
         <Route path="call/:templateId" element={<Application />} />
         <Route path="edit" element={<Edit />} />

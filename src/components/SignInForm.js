@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, FormControlLabel, TextField, Typography, Checkbox, Grid, Box, Container } from '@mui/material';
+import { Button, FormControlLabel, TextField, Typography, Checkbox, Box, Container } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function SignInForm() {
@@ -81,18 +81,10 @@ export default function SignInForm() {
                             SIGN IN
                         </Button>
                     </Link>
-                    <Grid container>
-                        <Grid item xs>
-                            <Link to="#" style={styles.link}>
-                                Forgot password?
-                            </Link>
-                        </Grid>
-                        <Grid item>
-                            <Link to="/signup" style={styles.link}>
-                                Don't have an account? Sign up
-                            </Link>
-                        </Grid>
-                    </Grid>
+                    <Box sx={{display: "flex", justifyContent: "space-between"}}>
+                        <Link to="#" style={styles.link}>Forgot password?</Link>
+                        <Link to="/signup" style={styles.link}>Don't have an account? Sign up</Link>
+                    </Box>
                 </Box>
             </Box>
         </Container>
