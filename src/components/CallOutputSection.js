@@ -117,7 +117,9 @@ export default function CallOutputSection(props){
                 </Card>
                 <Box sx={styles.buttons}>
                     <ExportModalButton callInfo={props.callInfo} questions={props.questions} otherNotes={otherNotes} exportOptions={props.exportOptions}/>
-                    <ExitModalButton handleNewCall={props.handleNewCall}/>
+                    <ExitModalButton 
+                        // handleNewCall={props.handleNewCall}
+                    />
                 </Box>
             </Box>
         </Box>

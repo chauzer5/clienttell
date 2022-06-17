@@ -38,11 +38,11 @@ export default function Application(){
         console.log(`Path: ${folderPathAsString}`);
     };
 
-    const handleNewCall = () => {
-        setQuestions([]);
-        setCurrentEdit(-1);
-        setFolderPath([]);
-    }
+    // const handleNewCall = () => {
+    //     setQuestions([]);
+    //     setCurrentEdit(-1);
+    //     setFolderPath([]);
+    // }
 
     return (
         <AppPage call={true} callInfo={{...state}} setCallInfo={setState} templateId={templateUUID}>
@@ -57,7 +57,7 @@ export default function Application(){
                 </Box>
                 <Box sx={{width: "50%", backgroundColor: "whitesmoke"}}>
                     <CallOutputSection
-                        handleNewCall={handleNewCall}
+                        // handleNewCall={handleNewCall}
                         callInfo={state}
                         questions={questions}
                         currentEdit={currentEdit}

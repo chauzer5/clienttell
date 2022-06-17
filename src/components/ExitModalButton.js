@@ -2,9 +2,12 @@ import { Button } from "@mui/material";
 import React from "react";
 import { LightenDarkenColor } from "../colormod";
 // import CloseIcon from '@mui/icons-material/Close';
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
+
+
 
 export default function ExitModalButton(props){
+    const navigate = useNavigate();
     const styles= {
         button: {
             height: "60px",
@@ -78,7 +81,8 @@ export default function ExitModalButton(props){
     // }
 
     const handleClick = () => {
-        props.handleNewCall();
+        // props.handleNewCall();
+        navigate("/call");
     }
 
     return (
